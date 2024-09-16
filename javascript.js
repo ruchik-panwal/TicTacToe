@@ -3,6 +3,7 @@ gameBoard = [];
 
 // To reset the Game Board for the next Game
 function gameBoardReset() {
+    gameBoard = [];
     for (i = 0; i < 9; i++)
         gameBoard.push("");
 }
