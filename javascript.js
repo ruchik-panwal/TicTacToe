@@ -55,7 +55,7 @@ function randBg(str) {
         do {
             locate = Math.random() * 10000;
         }
-        while (locate > 1900);
+        while (locate > 2000);
 
         return parseInt(locate);
     }
@@ -64,8 +64,36 @@ function randBg(str) {
         do {
             locate = Math.random() * 1000;
         }
-        while (locate > 900);
+        while (locate > 1000);
 
         return parseInt(locate);
     }
+}
+
+// Selecting Navigation Buttons
+function navButtons() {
+
+    const navBtns = document.querySelectorAll(".homeNav");
+
+    navBtns.forEach((navBtns) => {
+
+        navBtns.addEventListener('click', () => {
+
+            if (navBtns.id == "PvC") { 
+
+            }
+
+            if (navBtns.id == "PvP") { }
+
+        });
+
+
+    });
+}
+
+navButtons();
+
+function startAni() {
+
+    
 }
