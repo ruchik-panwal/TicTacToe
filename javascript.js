@@ -18,3 +18,55 @@ function randomChoice() {
         return compChoice
 
 }
+
+
+backgroundTex();
+
+
+// B A C K G R O U N D
+
+// Responsible for the background texture of the homepage
+function backgroundTex() {
+
+    const bg = document.querySelector(".bg");
+
+    for (i = 0; i < 500; i++) {
+        const x = document.createElement("div");
+        bg.appendChild(x);
+        x.textContent = rand();
+        x.style.left = randBg("X") + "px";
+        x.style.top = randBg("Y") + "px";
+    }
+}
+
+
+// Gives a random "X" or "O" for the background texture
+function rand() {
+    if (Math.random() * 10 > 5)
+        return "X";
+    return "O";
+};
+
+
+// This function gives a random cordinate for the background texture
+function randBg(str) {
+
+    if (str == "X") {
+
+        do {
+            locate = Math.random() * 10000;
+        }
+        while (locate > 1900);
+
+        return parseInt(locate);
+    }
+    else {
+
+        do {
+            locate = Math.random() * 1000;
+        }
+        while (locate > 900);
+
+        return parseInt(locate);
+    }
+}
