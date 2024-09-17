@@ -35,6 +35,7 @@ function backgroundTex() {
         x.textContent = rand();
         x.style.left = randBg("X") + "px";
         x.style.top = randBg("Y") + "px";
+        x.style.opacity = "0.8"
     }
 }
 
@@ -77,10 +78,21 @@ function navButtons() {
 
     navBtns.forEach((navBtns) => {
 
+        navBtns.addEventListener('mousein', () => {
+
+            console.log("dsvf");
+
+        });
+
+
+    });
+
+    navBtns.forEach((navBtns) => {
+
         navBtns.addEventListener('click', () => {
 
             if (navBtns.id == "PvC") { 
-
+                startAni();
             }
 
             if (navBtns.id == "PvP") { }
@@ -95,5 +107,18 @@ navButtons();
 
 function startAni() {
 
-    
+    gsap.to(".title" , {
+        fontSize : "3rem",
+        margin: "15px",
+        ease: "circ.out",
+        duration: 2
+    });
+
+    gsap.to(".bg div" , {
+        color : "transparent",
+        duration: 2
+    })
+
 }
+
+// 
