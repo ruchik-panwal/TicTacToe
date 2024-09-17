@@ -8,7 +8,6 @@ function gameBoardReset() {
         gameBoard.push("");
 }
 
-console.log(gameBoard);
 
 // To get a computer generated opponent decision
 function randomChoice() {
