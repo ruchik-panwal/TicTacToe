@@ -78,10 +78,18 @@ function navButtons() {
 
     navBtns.forEach((navBtns) => {
 
-        navBtns.addEventListener('mousein', () => {
+        navBtns.addEventListener('mouseover', () => {
 
-            console.log("dsvf");
+            gsap.to("#" + navBtns.id, {
+                fontSize : "4vw"
+            });
+        });
 
+        navBtns.addEventListener('mouseout', () => {
+
+            gsap.to("#" + navBtns.id, {
+                fontSize : "3vw"
+            });
         });
 
 
