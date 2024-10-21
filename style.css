@@ -1,6 +1,7 @@
 :root {
     --night-black: #151314;
     --linen-white: #EFE6DD;
+    --bg-white: rgb(255, 255, 255) ;
 
     font-size: 16px;
 }
@@ -17,16 +18,23 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    user-select: none;
+
 }
 
-.bg{
+
+
+
+/* H O M E P A G E  */
+
+.bg {
     position: absolute;
     background-color: transparent;
     height: 100%;
     width: 100%;
 }
 
-.bg div{
+.bg div {
     height: 1vh;
     width: 1vh;
     font-family: "Lexend";
@@ -35,19 +43,22 @@ body {
     position: absolute;
 }
 
+
 h1 {
     position: relative;
     background: var(--linen-white);
     font-family: "Rubik Doodle Shadow", system-ui;
     font-size: 10vw;
-    margin: 3vw 0 3vw 2vw ;
+    /* font-size: 3rem; */
+    margin: 3vw 0 3vw 2vw;
+    /* margin: 15px; */
 
     align-self: flex-start;
 }
 
-.navigations{
+.navigations {
     position: relative;
-    margin: 5vh 0 0 7vw ;
+    margin: 5vh 0 0 7vw;
 
     /* Flex */
     display: flex;
@@ -56,7 +67,7 @@ h1 {
 
 }
 
-.navigations button{
+.navigations button {
     font-family: "Lexend", sans-serif;
     font-size: 3vw;
     font-weight: 800;
@@ -65,3 +76,143 @@ h1 {
     background-color: var(--linen-white);
 }
 
+/* Header */
+.header {
+    width: fit-content;
+    cursor: pointer;
+}
+
+/* Main Content */
+.mainContent {
+    background-color:var(--linen-white) ;
+    height: 90vh;
+    width: 100%;
+
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+
+    display: none;
+    
+}
+
+.scoreCard,
+.game{
+    height: 90%;
+    width: 50%;
+    margin: 50px;
+    
+
+    border-radius: 5px;
+    background-color: #EFE6DD ;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.game{
+    height: 750px;
+    width: 750px;
+}
+
+.scoreCard{
+    
+    flex: 2;
+
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.scoreCardTitle{
+    font-family: "Lexend";
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 900;
+}
+
+.playerScores{
+    display: flex;
+    justify-content: center;
+    font-family: "Fredoka";
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    height: 40%;
+
+    margin: 50px 0 50px 0;
+
+}
+
+.p1Score,
+.scoreSeperator,
+.p2Name{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.scoreSeperator{
+    margin: 0 100px 0 100px;
+}
+
+.game{
+    box-sizing: border-box;
+    padding: 50px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.boardDiv{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 8vw;
+    font-family:'Quicksand';
+    font-weight: 400;
+}
+
+
+/* Board Borders */
+
+#_0,
+#_3,
+#_6,
+#_7,
+#_4,
+#_1,
+#_8,
+#_5,
+#_2{
+    border: solid;
+    border-color: #151314;
+    border-width: 3px;
+}
+
+#_0,
+#_1,
+#_2{
+    border-top: transparent;
+}
+
+#_0,
+#_3,
+#_6{
+    border-left: transparent;
+}
+
+#_6,
+#_7,
+#_8{
+    border-bottom: transparent;
+}
+
+#_2,
+#_5,
+#_8{
+    border-right: transparent;
+}

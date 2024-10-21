@@ -1,11 +1,21 @@
 
 gameBoard = [];
+backgroundTex(0);
+navButtons();
+let tl = gsap.timeline();
+
+
 
 // To reset the Game Board for the next Game
 function gameBoardReset() {
     gameBoard = [];
     for (i = 0; i < 9; i++)
         gameBoard.push("");
+}
+
+
+function gamePlay(){
+    
 }
 
 
@@ -19,7 +29,38 @@ function randomChoice() {
 }
 
 
-backgroundTex(0);
+// Check Every possible way for the W
+function gameChecker(gBoard) {
+
+    let i = 0;
+    let j = 0;
+
+
+    // This loop checks the horizontal and vertical winning possibilities
+    while (i < 9) {
+
+        if (gBoard[j] == gBoard[j + 3] == gBoard[j + 6])
+            return true;
+
+        if (gBoard[i] == gBoard[i += 1] == gBoard[i += 1])
+            return true;
+
+        i += 1;
+        j += 1;
+    }
+
+    // Diagonal possibilities
+    if (gBoard[0] == gBoard[4] == gBoard[8])
+        return true;
+
+
+    if (gBoard[2] == gBoard[4] == gBoard[6])
+        return true;
+
+
+
+}
+
 
 
 // B A C K G R O U N D
@@ -108,17 +149,11 @@ function navButtons() {
 
             startAni();
             buttonfade();
-
-            if (navBtns.id == "PvC") {
-
-            }
-
-            if (navBtns.id == "PvP") { }
+            mainContentIntro();
         });
     });
 }
 
-navButtons();
 
 
 // A N I M A T I O N
@@ -126,7 +161,7 @@ navButtons();
 // Exit animation for the title screen 
 function startAni() {
 
-    gsap.to(".title", {
+    tl.to(".title", {
         fontSize: "3rem",
         margin: "15px",
         ease: "circ.out",
@@ -156,6 +191,26 @@ function buttonfade() {
         }
     });
 
+}
 
 
+function mainContentIntro() {
+
+    tl.to(".mainContent", {
+        display: "flex",
+        stagger: 1
+    });
+
+
+    tl.from(".mainContent", {
+        y: 1000,
+        stagger: 1,
+        duration: 1
+    });
+
+    // tl.from(".game", {
+    //     y: 1000,
+    //     stagger: 1,
+    //     duration: 1
+    // });
 }
