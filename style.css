@@ -176,43 +176,49 @@ h1 {
     font-weight: 400;
 }
 
+.boardDiv:hover{
+    cursor: pointer;
+}
+
 
 /* Board Borders */
 
-#_0,
-#_3,
-#_6,
-#_7,
-#_4,
-#_1,
-#_8,
-#_5,
-#_2{
+#bd0,
+#bd1,
+#bd2,
+#bd3,
+#bd4,
+#bd5,
+#bd6,
+#bd7,
+#bd8{
+
     border: solid;
     border-color: #151314;
+    
     border-width: 3px;
 }
-
-#_0,
-#_1,
-#_2{
+#bd0,
+#bd1,
+#bd2{
     border-top: transparent;
 }
 
-#_0,
-#_3,
-#_6{
+#bd0,
+#bd3,
+#bd6{
     border-left: transparent;
 }
 
-#_6,
-#_7,
-#_8{
+#bd6,
+#bd7,
+#bd8{
     border-bottom: transparent;
 }
 
-#_2,
-#_5,
-#_8{
+#bd2,
+#bd5,
+#bd8{
     border-right: transparent;
 }
+

@@ -2,6 +2,8 @@
 gameBoard = [];
 backgroundTex(0);
 navButtons();
+gameBoardReset();
+gamePlay();
 let tl = gsap.timeline();
 
 
@@ -10,12 +12,49 @@ let tl = gsap.timeline();
 function gameBoardReset() {
     gameBoard = [];
     for (i = 0; i < 9; i++)
-        gameBoard.push("");
+        gameBoard.push(i);
 }
 
 
-function gamePlay(){
-    
+function gamePlay() {
+
+    const boardElements = document.querySelectorAll(".boardDiv")
+
+    boardElements.forEach((boardElements) => {
+
+        boardElements.addEventListener("mouseover", ()=> {
+            if(typeof gameBoard[boardElements.id.slice(2,3)] == "number"){
+                boardElements.style.color = "#a1a1a1";
+                boardElements.innerHTML = "X";
+                
+            }
+        })
+
+
+        boardElements.addEventListener("mouseout", ()=> {
+            if(typeof gameBoard[boardElements.id.slice(2,3)] == "number"){
+                boardElements.innerHTML = "";
+            }
+        })
+
+        boardElements.addEventListener("click",() => {
+            
+
+            if(typeof gameBoard[boardElements.id.slice(2,3)] == "number"){
+
+                boardElements.style.color = "#151314";
+                boardElements.innerHTML = "X";
+                gameBoard[boardElements.id.slice(2,3)] = "X";
+
+            }
+
+            if(gameChecker(gameBoard)){ 
+                console.log("X won");
+            } 
+        })
+
+    });
+
 }
 
 
@@ -31,7 +70,7 @@ function randomChoice() {
 
 // Check Every possible way for the W
 function gameChecker(gBoard) {
-
+    console.log(gBoard);
     let i = 0;
     let j = 0;
 
@@ -40,7 +79,7 @@ function gameChecker(gBoard) {
     while (i < 9) {
 
         if (gBoard[j] == gBoard[j + 3] == gBoard[j + 6])
-            return true;
+            console.log(gBoard);
 
         if (gBoard[i] == gBoard[i += 1] == gBoard[i += 1])
             return true;
@@ -56,8 +95,6 @@ function gameChecker(gBoard) {
 
     if (gBoard[2] == gBoard[4] == gBoard[6])
         return true;
-
-
 
 }
 
@@ -150,6 +187,7 @@ function navButtons() {
             startAni();
             buttonfade();
             mainContentIntro();
+
         });
     });
 }
@@ -214,3 +252,4 @@ function mainContentIntro() {
     //     duration: 1
     // });
 }
+
