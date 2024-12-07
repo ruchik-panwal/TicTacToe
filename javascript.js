@@ -23,7 +23,7 @@ function gamePlay() {
     boardElements.forEach((boardElements) => {
 
         boardElements.addEventListener("mouseover", ()=> {
-            if(typeof gameBoard[boardElements.id.slice(2,3)] == "number"){
+            if(gameBoard[boardElements.id.slice(2,3)] < 10){
                 boardElements.style.color = "#a1a1a1";
                 boardElements.innerHTML = "X";
                 
@@ -32,7 +32,7 @@ function gamePlay() {
 
 
         boardElements.addEventListener("mouseout", ()=> {
-            if(typeof gameBoard[boardElements.id.slice(2,3)] == "number"){
+            if(gameBoard[boardElements.id.slice(2,3)] < 10){
                 boardElements.innerHTML = "";
             }
         })
@@ -40,11 +40,11 @@ function gamePlay() {
         boardElements.addEventListener("click",() => {
             
 
-            if(typeof gameBoard[boardElements.id.slice(2,3)] == "number"){
+            if(gameBoard[boardElements.id.slice(2,3)] < 10){
 
                 boardElements.style.color = "#151314";
                 boardElements.innerHTML = "X";
-                gameBoard[boardElements.id.slice(2,3)] = "X";
+                gameBoard[boardElements.id.slice(2,3)] = 100;
 
             }
 
@@ -70,18 +70,18 @@ function randomChoice() {
 
 // Check Every possible way for the W
 function gameChecker(gBoard) {
-    console.log(gBoard);
-    let i = 0;
-    let j = 0;
+    
+    i = 0;
+    j = 0;
 
 
     // This loop checks the horizontal and vertical winning possibilities
     while (i < 9) {
 
-        if (gBoard[j] == gBoard[j + 3] == gBoard[j + 6])
-            console.log(gBoard);
+        if (gBoard[j] == gBoard[j + 3] && gBoard[j + 3] == gBoard[j + 6])
+            return true;
 
-        if (gBoard[i] == gBoard[i += 1] == gBoard[i += 1])
+        if (gBoard[i] == gBoard[i += 1] && gBoard[i] == gBoard[i += 1])
             return true;
 
         i += 1;
@@ -89,11 +89,11 @@ function gameChecker(gBoard) {
     }
 
     // Diagonal possibilities
-    if (gBoard[0] == gBoard[4] == gBoard[8])
+    if (gBoard[0] == gBoard[4] && gBoard[4] == gBoard[8])
         return true;
 
 
-    if (gBoard[2] == gBoard[4] == gBoard[6])
+    if (gBoard[2] == gBoard[4] && gBoard[4] == gBoard[6])
         return true;
 
 }
