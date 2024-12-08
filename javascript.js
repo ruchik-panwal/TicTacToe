@@ -22,58 +22,69 @@ function gamePlay() {
 
     boardElements.forEach((boardElements) => {
 
-        boardElements.addEventListener("mouseover", ()=> {
-            if(gameBoard[boardElements.id.slice(2,3)] < 10){
+        boardElements.addEventListener("mouseover", () => {
+            if (gameBoard[boardElements.id.slice(2, 3)] < 10) {
                 boardElements.style.color = "#a1a1a1";
                 boardElements.innerHTML = "X";
-                
             }
         })
 
 
-        boardElements.addEventListener("mouseout", ()=> {
-            if(gameBoard[boardElements.id.slice(2,3)] < 10){
+        boardElements.addEventListener("mouseout", () => {
+            if (gameBoard[boardElements.id.slice(2, 3)] < 10) {
                 boardElements.innerHTML = "";
             }
         })
 
-        boardElements.addEventListener("click",() => {
-            
+        boardElements.addEventListener("click", () => {
 
-            if(gameBoard[boardElements.id.slice(2,3)] < 10){
 
+            if (gameBoard[boardElements.id.slice(2, 3)] < 10) {
                 boardElements.style.color = "#151314";
                 boardElements.innerHTML = "X";
-                gameBoard[boardElements.id.slice(2,3)] = 100;
-
+                gameBoard[boardElements.id.slice(2, 3)] = 100;
             }
 
-            if(gameChecker(gameBoard)){ 
+            if (gameChecker(gameBoard)) {
                 console.log("X won");
-            } 
+                return;
+            }
+
+            const computer = randomChoice(gameBoard);
+            const ele = document.querySelector("#bd" + computer)
+            ele.style.color = "#151314";
+            ele.innerHTML = "0";
+            gameBoard[computer] = 200;
+
+            if (gameChecker(gameBoard)) {
+                console.log("O won");
+                return;
+            }
         })
-
     });
-
 }
 
 
 // To get a computer generated opponent decision
-function randomChoice() {
+function randomChoice(gameBoard) {
 
-    compChoice = parseInt(Math.random() * 10)
-    if (gameBoard[compChoice] == "")
-        return compChoice
+    let compChoice = 100;
 
+    while (compChoice > 8) {
+        compChoice = parseInt(Math.random() * 10);
+        if (gameBoard[compChoice] > 10)
+            compChoice = 100
+    }
+
+    return compChoice
 }
 
 
 // Check Every possible way for the W
 function gameChecker(gBoard) {
-    
+
     i = 0;
     j = 0;
-
 
     // This loop checks the horizontal and vertical winning possibilities
     while (i < 9) {
@@ -130,7 +141,6 @@ function rand() {
         return "X";
     return "O";
 };
-
 
 // This function gives a random cordinate for the background texture
 function randBg(str) {
@@ -230,7 +240,6 @@ function buttonfade() {
     });
 
 }
-
 
 function mainContentIntro() {
 
