@@ -5,12 +5,19 @@ navButtons();
 gameBoardReset();
 gamePlay();
 let tl = gsap.timeline();
+let turn = 1;
+winner = "";
 
 
 
 // To reset the Game Board for the next Game
 function gameBoardReset() {
     gameBoard = [];
+    const boardElements = document.querySelectorAll(".boardDiv");
+
+    boardElements.forEach((boardElements) => {
+        boardElements.innerHTML = "";
+    });
     for (i = 0; i < 9; i++)
         gameBoard.push(i);
 }
@@ -46,10 +53,12 @@ function gamePlay() {
             }
 
             if (gameChecker(gameBoard)) {
-                console.log("X won");
+                winner = "X";
+                turns();
                 return;
             }
 
+            
             const computer = randomChoice(gameBoard);
             const ele = document.querySelector("#bd" + computer)
             ele.style.color = "#151314";
@@ -57,9 +66,12 @@ function gamePlay() {
             gameBoard[computer] = 200;
 
             if (gameChecker(gameBoard)) {
-                console.log("O won");
+                winner = "O";
+                turns();
                 return;
             }
+
+
         })
     });
 }
@@ -109,7 +121,28 @@ function gameChecker(gBoard) {
 
 }
 
+// Game Play
 
+function turns() {
+
+    if (turn > 3) {
+        alert("Game over");
+        turn = 0;
+    }
+    
+    if (winner == "X") {
+        document.querySelector("#p1" + turn).innerHTML = 1;
+        document.querySelector("#c1" + turn).innerHTML = 0;
+    } else {
+        document.querySelector("#p1" + turn).innerHTML = 0;
+        document.querySelector("#c1" + turn).innerHTML = 1;
+    }
+
+    turn = turn + 1;
+    
+    gameBoardReset();
+    console.log(turn);
+}
 
 // B A C K G R O U N D
 
